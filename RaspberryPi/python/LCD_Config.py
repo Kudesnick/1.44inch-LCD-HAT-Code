@@ -55,6 +55,6 @@ def GPIO_Init():
     GPIO.setup(LCD_BL_PIN, GPIO.OUT)
     SPI.max_speed_hz = 9000000
     SPI.mode = 0b00
-    return 0;
+    return 0
 
 ### END OF FILE ###
