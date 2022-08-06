@@ -1,0 +1,235 @@
+/dts-v1/;
+/plugin/;
+/ {
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            butt_pins: butt_pins {
+                brcm,pins = <21 20 16 6 19 5 26 13>; // gpio no.
+                brcm,function = <0 0 0 0 0 0 0 0>;   // 0:in, 1:out
+                brcm,pull = <2 2 2 2 2 2 2 2>;       // 2:up 1:down 0:none
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            key123: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@21 {
+                    label = "key_f1";
+                    linux,code = <2>;
+                    gpios = <&gpio 21 1>;
+                };
+                button@20 {
+                    label = "key_f2";
+                    linux,code = <3>;
+                    gpios = <&gpio 20 1>;
+                };
+                button@16 {
+                    label = "key_f3";
+                    linux,code = <4>;
+                    gpios = <&gpio 16 1>;
+                };
+            };
+        };
+    };
+
+    fragment@2 {
+        target-path = "/";
+        __dormant__ {
+            key321: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@16 {
+                    label = "key_f1";
+                    linux,code = <2>;
+                    gpios = <&gpio 16 1>;
+                };
+                button@20 {
+                    label = "key_f2";
+                    linux,code = <3>;
+                    gpios = <&gpio 20 1>;
+                };
+                button@21 {
+                    label = "key_f3";
+                    linux,code = <4>;
+                    gpios = <&gpio 21 1>;
+                };
+            };
+        };
+    };
+
+    fragment@3 {
+        target-path = "/";
+        __overlay__ {
+            key_enter: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@13 {
+                    label = "key_enter";
+                    linux,code = <28>;
+                    gpios = <&gpio 13 1>;
+                };
+            };
+        };
+    };
+
+    fragment@4 {
+        target-path = "/";
+        __overlay__ {
+            keypad_0: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@6 {
+                    label = "key_up";
+                    linux,code = <103>;
+                    gpios = <&gpio 6 1>;
+                };
+                button@19 {
+                    label = "key_down";
+                    linux,code = <108>;
+                    gpios = <&gpio 19 1>;
+                };
+                button@5 {
+                    label = "key_left";
+                    linux,code = <105>;
+                    gpios = <&gpio 5 1>;
+                };
+                button@26 {
+                    label = "key_right";
+                    linux,code = <106>;
+                    gpios = <&gpio 26 1>;
+                };
+            };
+        };
+    };
+
+    fragment@5 {
+        target-path = "/";
+        __dormant__ {
+            keypad_90: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@26 {
+                    label = "key_up";
+                    linux,code = <103>;
+                    gpios = <&gpio 26 1>;
+                };
+                button@5 {
+                    label = "key_down";
+                    linux,code = <108>;
+                    gpios = <&gpio 5 1>;
+                };
+                button@6 {
+                    label = "key_left";
+                    linux,code = <105>;
+                    gpios = <&gpio 6 1>;
+                };
+                button@19 {
+                    label = "key_right";
+                    linux,code = <106>;
+                    gpios = <&gpio 19 1>;
+                };
+            };
+        };
+    };
+
+    fragment@6 {
+        target-path = "/";
+        __dormant__ {
+            keypad_180: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@19 {
+                    label = "key_up";
+                    linux,code = <103>;
+                    gpios = <&gpio 19 1>;
+                };
+                button@6 {
+                    label = "key_down";
+                    linux,code = <108>;
+                    gpios = <&gpio 6 1>;
+                };
+                button@26 {
+                    label = "key_left";
+                    linux,code = <105>;
+                    gpios = <&gpio 26 1>;
+                };
+                button@5 {
+                    label = "key_right";
+                    linux,code = <106>;
+                    gpios = <&gpio 5 1>;
+                };
+            };
+        };
+    };
+
+    fragment@7 {
+        target-path = "/";
+        __dormant__ {
+            keypad_270: lcd-hat-keyboard {
+                pinctrl-names = "default";
+                pinctrl-0 = <&butt_pins>;
+                compatible = "gpio-keys";
+                status = "okay";
+                autorepeat;
+
+                button@5 {
+                    label = "key_up";
+                    linux,code = <103>;
+                    gpios = <&gpio 5 1>;
+                };
+                button@26 {
+                    label = "key_down";
+                    linux,code = <108>;
+                    gpios = <&gpio 26 1>;
+                };
+                button@19 {
+                    label = "key_left";
+                    linux,code = <105>;
+                    gpios = <&gpio 19 1>;
+                };
+                button@6 {
+                    label = "key_right";
+                    linux,code = <106>;
+                    gpios = <&gpio 6 1>;
+                };
+            };
+        };
+    };
+
+    __overrides__ {
+        rot90  = <0>,"+1-2-4+5-6-7";
+        rot180 = <0>,"-1+2-4-5+6-7";
+        rot270 = <0>,"-1+2-4-5-6+7";
+    };
+};
