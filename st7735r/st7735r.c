@@ -144,7 +144,7 @@ static const struct st7735r_cfg jd_t18003_t01_cfg = {
 	.write_only	= true,
 };
 
-static const struct st7735r_cfg rh128128t_cfg = {
+static struct st7735r_cfg rh128128t_cfg = {
 	.mode		= { DRM_SIMPLE_MODE(128, 128, 25, 26) },
 	.left_offset	= 2,
 	.top_offset	= 3,
@@ -219,6 +219,25 @@ static int st7735r_probe(struct spi_device *spi)
 		return PTR_ERR(dbidev->backlight);
 
 	device_property_read_u32(dev, "rotation", &rotation);
+
+	switch (rotation) {
+	default:
+		rh128128t_cfg.left_offset = 2;
+		rh128128t_cfg.top_offset = 3;
+		break;
+	case 90:
+		rh128128t_cfg.left_offset = 1;
+		rh128128t_cfg.top_offset = 2;
+		break;
+	case 180:
+		rh128128t_cfg.left_offset = 2;
+		rh128128t_cfg.top_offset = 1;
+		break;
+	case 270:
+		rh128128t_cfg.left_offset = 3;
+		rh128128t_cfg.top_offset = 2;
+		break;
+	}
 
 	ret = mipi_dbi_spi_init(spi, dbi, dc);
 	if (ret)
