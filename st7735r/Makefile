@@ -17,4 +17,4 @@ st7735r.c: st7735r.c.origin
 	git apply calibration-offset.patch
 
 st7735r.c.origin:
-	wget -O st7735r.c.origin https://github.com/raspberrypi/linux/raw/HEAD/drivers/gpu/drm/tiny/st7735r.c
+	wget -O st7735r.c.origin https://github.com/raspberrypi/linux/raw/rpi-6.11.y/drivers/gpu/drm/tiny/st7735r.c
