@@ -1,6 +1,7 @@
 obj-m += st7735r.o
 
 KERNELDIR ?= /lib/modules/$(shell uname -r)
+SOURCE ?= https://github.com/raspberrypi/linux/raw/HEAD/drivers/gpu/drm/tiny/st7735r.c
 
 all: st7735r.ko
 
@@ -17,4 +18,4 @@ st7735r.c: st7735r.c.origin
 	git apply calibration-offset.patch
 
 st7735r.c.origin:
-	wget -O st7735r.c.origin https://github.com/raspberrypi/linux/raw/HEAD/drivers/gpu/drm/tiny/st7735r.c
+	wget -O st7735r.c.origin $(SOURCE)

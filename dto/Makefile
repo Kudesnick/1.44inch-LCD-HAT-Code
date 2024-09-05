@@ -1,5 +1,5 @@
-DIR_DTO = /boot/firmware/overlays/
-CONFIG = /boot/firmware/config.txt
+DIR_DTO = /boot/overlays/
+CONFIG = /boot/config.txt
 TARGET = $(DIR_DTO)lcd_hat_keyboard.dtbo
 SOURCE = lcd_hat_keyboard-overlay.dts
 
